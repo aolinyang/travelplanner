@@ -1,0 +1,41 @@
+users:
+   -id INT
+   -first_name VARCHAR(100)
+   -last_name VARCHAR(100)
+   -email VARCHAR(100)
+   -password VARCHAR(255)
+   -created DATETIME
+   -modified DATETIME
+
+trips:
+   -user_id INT
+   -trip_id INT AUTO INCREMENT
+   -start_date DATETIME (time leaving house)
+   -end_date DATETIME (time returning to house)
+   -places JSON_ARRAY {
+               [{location:"barcelona, italy",
+                 start_date: "June 24 2019",
+                 end_date: "June 25 2019"},
+                {location:"paris, france",
+                 start_date: "June 25 2019",
+                 end_date: "June 27 2019"}]
+           } 
+   -lodging JSON_ARRAY {
+               ["3462 Lone Rock rd, Metrocity, TX 34222", "8889 Big Rock rd, Houston, TX 43545"]
+           }
+   -travel_log JSON_ARRAY
+   -completed BOOL
+   -PRIMARY KEY (trip_id)
+   -FOREIGN KEY fk_user_id(user_id) REFERENCES users(id)
+
+itemlists:
+   -itemlist_id INT AUTO INCREMENT
+   -trip_id INT
+   -essentials JSON_ARRAY
+   -food JSON_ARRAY
+   -clothing JSON_ARRAY
+   -toiletries JSON_ARRAY
+   -entertainment JSON_ARRAY
+   -misc JSON_ARRAY
+   -PRIMARY KEY (itemlist_id)
+   -FOREIGN KEY fk_trip_id(trip_id) REFERENCES trips(trip_id)

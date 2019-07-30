@@ -1,0 +1,28 @@
+{
+    "body": {
+        "trip_info": {
+            "trip_id": "3",
+            "start_date": "2019-01-01 02:00:00",
+            "end_date": "2019-01-03 21:25:44",
+            "places": [{
+                    "location":"barcelona, italy",
+                    "start_date": "June 24 2019",
+                    "end_date": "June 25 2019"},
+                    {"location":"paris, france",
+                    "start_date": "June 25 2019",
+                    "end_date": "June 27 2019"}],
+            "lodging": ["3462 Lone Rock rd, Metrocity, TX 34222", 
+                        "8889 Big Rock rd, Houston, TX 43545"],
+            "travel_log":[{"Date": "1/31/2018", "log":"Today was a great day for travelling!"}],
+            "completed":false
+        },
+        "item_list": {
+            "essentials": [{"name": "something", "quantity":"2"}, {"name":"something_else","quantity":"3"}],
+            "food": [{"name": "something", "quantity":"2"}, {"name":"something_else","quantity":"3"}],
+            "clothing": [{"name": "something", "quantity":"2"}, {"name":"something_else","quantity":"3"}],
+            "toiletries": [{"name": "something", "quantity":"2"}, {"name":"something_else","quantity":"3"}],
+            "entertainment": [{"name": "something", "quantity":"2"}, {"name":"something_else","quantity":"3"}],
+            "misc": [{"name": "something", "quantity":"2"}, {"name":"something_else","quantity":"3"}]
+        }
+    }
+}
