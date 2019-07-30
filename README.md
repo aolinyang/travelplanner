@@ -1,2 +1,2 @@
 # travelplanner
- A web app to manage all your travel plans.
+ A web app to manage all your travelling plans.
