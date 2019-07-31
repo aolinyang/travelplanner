@@ -1,9 +1,7 @@
-var connection = require('./../sqlconnection/connectsql');
 const express = require('express');
-var app = express();
 var router = express.Router();
 
-router.get('/', (req, res) => {
+router.post('/', (req, res) => {
     res.clearCookie('token');
     res.send({
         'code':0,

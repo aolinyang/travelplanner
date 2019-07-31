@@ -14,6 +14,8 @@ const userInfoRouter = require('./routes/loginstuff/getuserinfo');
 const getTripsRouter =  require('./routes/tripstuff/gettrips');
 const newTripRouter = require('./routes/tripstuff/newtrip');
 const updateTripRouter = require('./routes/tripstuff/updatetrip');
+const deleteTripRouter = require('./routes/tripstuff/deletetrip');
+const deleteUserRouter = require('./routes/loginstuff/deleteuser');
 
 //const dashRouter = require('./routes/studyguide/dashboard');
 
@@ -58,6 +60,8 @@ app.use('/getuserinfo', userInfoRouter);
 app.use('/gettrips', getTripsRouter);
 app.use('/newtrip', newTripRouter);
 app.use('/updatetrip', updateTripRouter);
+app.use('/deletetrip', deleteTripRouter);
+app.use('/deleteuser', deleteUserRouter);
 
 //app.use('/dashboard', dashRouter);
 
