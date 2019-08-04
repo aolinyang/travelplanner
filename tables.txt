@@ -23,7 +23,7 @@ places:
    -start_datetime DATETIME
    -end_datetime DATETIME
    -location VARCHAR
-   -description VARCHAR
+   -descript VARCHAR
 
 lodging:
    -lodging_id INT AUTO INCREMENT

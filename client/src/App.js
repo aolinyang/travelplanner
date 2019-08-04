@@ -1,23 +1,17 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React, { Component } from 'react';
+import {Route, Link} from 'react-router-dom';
+import RegisterForm from './components/login/registerForm';
 
-//var getcookie = require('./studyguide/authtest');
-
-class App extends React.Component {
-  componentDidMount() {
-   // document.cookie = 'token=; expires=Sat, 27 Jul 2019 00:00:01 GMT;';
-    //document.cookie = 'token=wrong';
-    getcookie();
-  }
+class App extends Component {
   render() {
-    
     return(
       <div>
-        <p>{document.cookie}</p>
-        <p>test</p>
+        
+
+`       <Route path = "/register" exact component={RegisterForm} />
       </div>
-    )
-  };
+    );
+  }
 }
 
 export default App;

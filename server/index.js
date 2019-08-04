@@ -52,16 +52,16 @@ app.get('/', function(req, res) {
     res.json({ message: 'Howdy!' });
 });
 
-app.use('/register', registerRouter);
-app.use('/login', loginRouter);
-app.use('/logout', logoutRouter);
-app.use('/getuserinfo', userInfoRouter);
+app.use('/api/register', registerRouter);
+app.use('/api/login', loginRouter);
+app.use('/api/logout', logoutRouter);
+app.use('/api/getuserinfo', userInfoRouter);
 
-app.use('/gettrips', getTripsRouter);
-app.use('/newtrip', newTripRouter);
-app.use('/updatetrip', updateTripRouter);
-app.use('/deletetrip', deleteTripRouter);
-app.use('/deleteuser', deleteUserRouter);
+app.use('/api/gettrips', getTripsRouter);
+app.use('/api/newtrip', newTripRouter);
+app.use('/api/updatetrip', updateTripRouter);
+app.use('/api/deletetrip', deleteTripRouter);
+app.use('/api/deleteuser', deleteUserRouter);
 
 //app.use('/dashboard', dashRouter);
 

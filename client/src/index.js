@@ -1,7 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-//import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-//import 'bootstrap/dist/css/bootstrap.css';
+import registerServiceWorker from './registerServiceWorker';
+import 'bootstrap/dist/css/bootstrap.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import {BrowserRouter as Router} from "react-router-dom";
+
+import {Provider} from "mobx-react";
+import {userStore} from "./stores/userStore";
+import { configure } from "mobx";
+
+configure({ enforceActions: 'observed' });
+
+const store = {
+    userStore
+}
+
+ReactDOM.render(<Provider {...store}>
+                  <Router>
+                    <App />
+                  </Router>
+                </Provider>, document.getElementById('root'));
+registerServiceWorker();

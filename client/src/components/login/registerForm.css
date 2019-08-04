@@ -1,0 +1,14 @@
+h2 {
+    text-align: center;
+}
+
+form {
+    background: #ebd234;
+    padding: 2em 0;
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+#submitButton {
+  margin-top: 40px;
+}
