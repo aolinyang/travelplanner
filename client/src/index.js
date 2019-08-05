@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import {BrowserRouter as Router} from "react-router-dom";
+import Routes from "./Routes";
 
 import {Provider} from "mobx-react";
 import {userStore} from "./stores/userStore";
@@ -17,8 +16,7 @@ const store = {
 }
 
 ReactDOM.render(<Provider {...store}>
-                  <Router>
-                    <App />
-                  </Router>
+                  <Routes />
                 </Provider>, document.getElementById('root'));
+
 registerServiceWorker();

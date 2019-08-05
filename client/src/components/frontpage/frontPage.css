@@ -1,0 +1,48 @@
+#mainpage {
+    background: url("/mainbg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#mainpage div {
+    background-color: transparent;
+}
+
+html, body, #root, #root>#mainpage {
+    height: 100%
+}
+
+#mainTitle {
+    text-align: center;
+    color: white;
+}
+
+#mainTitle h1 {
+    font-size: 8em;
+    letter-spacing: 5px;
+    font-family: 'Patua One', cursive;
+}
+
+#mainTitle h3 {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+#buttonRow {
+    margin-top: 5%;
+}
+
+.btn {
+    font-size: 1.8em;
+    width: 8em;
+    height: 3em;
+    position: relative;
+    font-family: 'Blinker', sans-serif;
+}
+
+#leftButton {
+    right: 0.5em;
+}
+
+#rightButton {
+    left: 0.5em;
+}
