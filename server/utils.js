@@ -10,18 +10,12 @@ const checktoken = function(req, res, next) {
 
     //if token isn't found at all
     if (!token) {
-      res.status(200).send({
-          'code':-1,
-          'result':'Unauthorized, No token provided'
-        });
+      res.status(403).end();
     } else {
       jwt.verify(token, secret, function(err, decoded) {
         //if token is wrong
         if (err) {
-          res.status(200).send({
-              'code': -2,
-              'result':'Unauthorized, Invalid token'
-            });
+            res.status(403).end();
         } else {
           let user_info = {
             id: decoded.id,
@@ -80,8 +74,8 @@ const query = function(statement, args) {
             if (err)
                 return reject(err);
             resolve(rows);
-        } );
-    } );
+        });
+    });
 }
 
 const hash = function(password) {

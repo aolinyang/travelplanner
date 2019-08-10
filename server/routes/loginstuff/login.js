@@ -34,10 +34,11 @@ router.post('/', (req, res) => {
       const token = jwt.sign(userdata, secret, {expiresIn: '10h'});
       //httpOnly: true because no reason for client to know token value
       //later on, test if secure: false is needed
+      res.cookie('user_info', JSON.stringify(userdata), {httpOnly: false, maxAge: timeout, secure: false});
       res.status(200).cookie('token', token, { httpOnly: true, maxAge: timeout, secure: false}).send({
         "code":0,
         "result":"login sucessful",
-        "userdata": userdata
+        "user_info": userdata
       });
 
     }).catch((err) => {

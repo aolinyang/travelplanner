@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     res.send({
         'code':'0',
         'result':'data successfully retrieved',
-        'body':req.body.user_info
+        'user_info':req.body.user_info
     });
 
 });

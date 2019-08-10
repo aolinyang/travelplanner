@@ -57,7 +57,7 @@ router.get('/', (req, res) => {
         res.send({
             'code':0,
             'result':'successfully retrieved trips',
-            'body':trips
+            'all_trips':trips
          });
 
     }).catch((err) => {

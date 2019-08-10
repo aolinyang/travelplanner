@@ -17,10 +17,10 @@ class FrontPage extends React.Component {
                     <h3>{APP_DESC}</h3>
                     <div className="row" id="buttonRow">
                         <div className="col">
-                            <Link to="/register"><button className="btn btn-lg btn-success float-right" id="leftButton">Get Started</button></Link>
+                            <Link to="/register"><button className="btn btn-lg btn-success float-right frontButton" id="leftButton">Get Started</button></Link>
                         </div>
                         <div className="col">
-                            <Link to="/login"><button className="btn btn-lg btn-danger float-left" id="rightButton">Log In</button></Link>
+                            <Link to="/login"><button className="btn btn-lg btn-danger float-left frontButton" id="rightButton">Log In</button></Link>
                         </div>
                     </div>
                 </div>

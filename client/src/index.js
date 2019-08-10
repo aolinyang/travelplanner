@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Routes from "./Routes";
 
 import {Provider} from "mobx-react";
-import {userStore} from "./stores/userStore";
+import userStore from "./stores/userStore";
 import { configure } from "mobx";
 
 configure({ enforceActions: 'observed' });

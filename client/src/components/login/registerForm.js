@@ -1,5 +1,6 @@
 import React from "react";
-import "./registerForm.css";
+import "./loginForm.css";
+import { withRouter, Link } from 'react-router-dom';
 
 import InputField from "./inputField";
 import handleRegister from "./../../utils/login/handleRegister";
@@ -57,11 +58,10 @@ class RegisterForm extends React.Component {
     async handleSubmit(e) {
         e.preventDefault();
         let result = await handleRegister(this.state);
-        alert(result);
         if (result === -1) {
             document.getElementById('registerEmailInput').setCustomValidity("Email already taken.");
         } else if (result === 0) {
-            this.props.history.push("/test");
+            this.props.history.push('/login');
         }
     }
 
@@ -74,31 +74,34 @@ class RegisterForm extends React.Component {
 
     render() {
         return(
-            <form onSubmit={this.handleSubmit}>
-                <h2>Register</h2>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-6">
-                            <InputField fieldId="registerFirstNameInput" inputType="text" name="First Name" value={this.state.first_name} 
-                                        handleChange={this.handleFnChange} placeHolder="e.g. John" />
+            <div>
+                <form className="authForm" onSubmit={this.handleSubmit}>
+                    <h2 className="authTitle">Register</h2>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-6">
+                                <InputField fieldId="registerFirstNameInput" inputType="text" name="First Name" value={this.state.first_name} 
+                                            handleChange={this.handleFnChange} placeHolder="e.g. John" />
+                            </div>
+                            <div className="col-6">
+                                <InputField fieldId="registerLastNameInput" inputType="text" name="Last Name" value={this.state.last_name} 
+                                            handleChange={this.handleLnChange} placeHolder="e.g. Doe" />
+                            </div>
                         </div>
-                        <div className="col-6">
-                            <InputField fieldId="registerLastNameInput" inputType="text" name="Last Name" value={this.state.last_name} 
-                                        handleChange={this.handleLnChange} placeHolder="e.g. Doe" />
-                        </div>
+                        <InputField fieldId="registerEmailInput" inputType="email" name="Email" value={this.state.email} 
+                                    handleChange={this.handleEmailChange} placeHolder="e.g. username123@example.com" />
+                        <InputField fieldId="registerPasswordInput" inputType="password" name="Password" value={this.state.password} 
+                                    handleChange={this.handlePasswordChange} placeHolder="" />
+                        <InputField fieldId="registerCPasswordInput" inputType="password" name="Confirm Password" value={this.state.confirmPassword} 
+                                    handleChange={this.handleCPasswordChange} placeHolder="" />
+                        <button type="submit" className="btn btn-primary btn-lg btn-block submitButton">Submit</button>
                     </div>
-                    <InputField fieldId="registerEmailInput" inputType="email" name="Email" value={this.state.email} 
-                                handleChange={this.handleEmailChange} placeHolder="e.g. username123@example.com" />
-                    <InputField fieldId="registerPasswordInput" inputType="password" name="Password" value={this.state.password} 
-                                handleChange={this.handlePasswordChange} placeHolder="" />
-                    <InputField fieldId="registerCPasswordInput" inputType="password" name="Confirm Password" value={this.state.confirmPassword} 
-                                handleChange={this.handleCPasswordChange} placeHolder="" />
-                    <button type="submit" className="btn btn-primary btn-lg btn-block" id="submitButton">Submit</button>
-                </div>
-            </form>
+                </form>
+                <p className="alternateOption">Already have an account? <Link to="/login">Log in</Link> instead.</p>
+            </div>
         );
     }
 
 }
 
-export default RegisterForm;
+export default withRouter(RegisterForm);
