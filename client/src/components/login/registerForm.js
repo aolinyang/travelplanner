@@ -1,9 +1,10 @@
 import React from "react";
-import "./loginForm.css";
+import "./loginForm.scss";
 import { withRouter, Link } from 'react-router-dom';
-
 import InputField from "./inputField";
 import handleRegister from "./../../utils/login/handleRegister";
+
+import { Form, Container, Row, Col, Button } from "reactstrap";
 
 class RegisterForm extends React.Component {
 
@@ -66,37 +67,35 @@ class RegisterForm extends React.Component {
     }
 
     validatePassword() {
-    
         let validity = this.state.password !== this.state.confirmPassword ? "Passwords don't match" : "";
         document.getElementById('registerCPasswordInput').setCustomValidity(validity);
-
     }
 
     render() {
         return(
             <div>
-                <form className="authForm" onSubmit={this.handleSubmit}>
+                <Form className="authForm" onSubmit={this.handleSubmit}>
                     <h2 className="authTitle">Register</h2>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-6">
+                    <Container>
+                        <Row>
+                            <Col>
                                 <InputField fieldId="registerFirstNameInput" inputType="text" name="First Name" value={this.state.first_name} 
                                             handleChange={this.handleFnChange} placeHolder="e.g. John" />
-                            </div>
-                            <div className="col-6">
+                            </Col>
+                            <Col>
                                 <InputField fieldId="registerLastNameInput" inputType="text" name="Last Name" value={this.state.last_name} 
                                             handleChange={this.handleLnChange} placeHolder="e.g. Doe" />
-                            </div>
-                        </div>
+                            </Col>
+                        </Row>
                         <InputField fieldId="registerEmailInput" inputType="email" name="Email" value={this.state.email} 
                                     handleChange={this.handleEmailChange} placeHolder="e.g. username123@example.com" />
                         <InputField fieldId="registerPasswordInput" inputType="password" name="Password" value={this.state.password} 
                                     handleChange={this.handlePasswordChange} placeHolder="" />
                         <InputField fieldId="registerCPasswordInput" inputType="password" name="Confirm Password" value={this.state.confirmPassword} 
                                     handleChange={this.handleCPasswordChange} placeHolder="" />
-                        <button type="submit" className="btn btn-primary btn-lg btn-block submitButton">Submit</button>
-                    </div>
-                </form>
+                        <Button color="primary" size="lg" className="submitButton" block>Submit</Button>
+                    </Container>
+                </Form>
                 <p className="alternateOption">Already have an account? <Link to="/login">Log in</Link> instead.</p>
             </div>
         );

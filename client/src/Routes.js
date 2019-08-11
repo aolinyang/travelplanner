@@ -13,7 +13,7 @@ export default function(props) {
             <PublicRoute exact path = "/" component={FrontPage} />
             <PublicRoute exact path = "/register" component={AuthPage} compargs={{type:"register"}} />
             <PublicRoute exact path = "/login" component={AuthPage} compargs={{type:"login"}} />
-            <PrivateRoute exact path = "/dashboard" component={Dashboard} compargs={{toDisplay:"success"}} />
+            <PrivateRoute exact path = "/dashboard" component={Dashboard} />
         </Router>
     );
 }

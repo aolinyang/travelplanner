@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./frontPage.css";
+import "./frontPage.scss";
 import { APP_NAME, APP_DESC } from "./../../constants";
+import { Jumbotron, 
+         Container,
+         Row,
+         Col } from "reactstrap";
 
 class FrontPage extends React.Component {
 
@@ -12,18 +16,20 @@ class FrontPage extends React.Component {
     render() {
         return(
             <div id="mainpage">
-                <div className="jumbotron container" id="mainTitle">
-                    <h1>{APP_NAME}</h1>
-                    <h3>{APP_DESC}</h3>
-                    <div className="row" id="buttonRow">
-                        <div className="col">
-                            <Link to="/register"><button className="btn btn-lg btn-success float-right frontButton" id="leftButton">Get Started</button></Link>
-                        </div>
-                        <div className="col">
-                            <Link to="/login"><button className="btn btn-lg btn-danger float-left frontButton" id="rightButton">Log In</button></Link>
-                        </div>
-                    </div>
-                </div>
+                <Jumbotron id="mainTitle">
+                    <Container>
+                        <h1>{APP_NAME}</h1>
+                        <h3>{APP_DESC}</h3>
+                        <Row className="buttonRowFront">
+                            <Col>
+                                <Link to="/register"><button className="btn btn-lg btn-success float-right frontButton" id="leftButton">Get Started</button></Link>
+                            </Col>
+                            <Col>
+                                <Link to="/login"><button className="btn btn-lg btn-danger float-left frontButton" id="rightButton">Log In</button></Link>
+                            </Col>
+                        </Row>
+                    </Container>
+                </Jumbotron>
             </div>
         );
     }

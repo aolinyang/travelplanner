@@ -1,29 +1,20 @@
 import React from "react";
 
-class InputField extends React.Component {
+import { FormGroup, Label, Input } from "reactstrap";
 
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
+const InputField = (props) => {
         return (
-            <div className="form-group">
-                <label htmlFor={this.props.fieldId} className="col-form-label">{this.props.name}</label>
-                <div>
-                    <input type={this.props.inputType}
-                            className="form-control"
-                            id={this.props.fieldId}
-                            value={this.props.value} 
-                            onChange={this.props.handleChange} 
-                            placeholder={this.props.placeHolder} 
-                            required 
-                    />
-                </div>
-            </div>
+            <FormGroup>
+                <Label for={props.fieldId} className="col-form-label">{props.name}</Label>
+                <Input type={props.inputType}
+                       id={props.fieldId}
+                       value={props.value} 
+                       onChange={props.handleChange} 
+                       placeholder={props.placeHolder} 
+                       required 
+                />
+            </FormGroup>
         );
-    }
-
 }
 
 export default InputField;

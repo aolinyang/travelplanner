@@ -2,10 +2,9 @@
     background: url("/mainbg.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-}
-
-#mainpage div {
-    background-color: transparent;
+    div {
+        background-color: transparent;
+    }
 }
 
 html, body, #root, #root>#mainpage {
@@ -15,19 +14,17 @@ html, body, #root, #root>#mainpage {
 #mainTitle {
     text-align: center;
     color: white;
+    h1 {
+        font-size: 8em;
+        letter-spacing: 5px;
+        font-family: 'Patua One', cursive;
+    }
+    h3 {
+        font-family: 'Noto Sans', sans-serif;
+    }
 }
 
-#mainTitle h1 {
-    font-size: 8em;
-    letter-spacing: 5px;
-    font-family: 'Patua One', cursive;
-}
-
-#mainTitle h3 {
-    font-family: 'Noto Sans', sans-serif;
-}
-
-#buttonRow {
+.buttonRowFront {
     margin-top: 5%;
 }
 

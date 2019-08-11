@@ -1,10 +1,12 @@
 import React from "react";
-import "./loginForm.css";
+import "./loginForm.scss";
 import { withRouter, Link } from 'react-router-dom';
 import {inject, observer} from "mobx-react";
 
 import InputField from "./inputField";
 import handleLogin from "./../../utils/login/handleLogin";
+
+import { Form, Container, Button } from "reactstrap";
 
 @inject("userStore")
 @observer
@@ -51,16 +53,16 @@ class LoginForm extends React.Component {
     render() {
         return(
             <div>
-                <form className="authForm" onSubmit={this.handleSubmit}>
+                <Form className="authForm" onSubmit={this.handleSubmit}>
                     <h2 className="authTitle">Login</h2>
-                    <div className="container">
+                    <Container>
                         <InputField fieldId="loginEmailInput" inputType="email" name="Email" value={this.state.email} 
                                     handleChange={this.handleEmailChange} placeHolder="" />
                         <InputField fieldId="loginPasswordInput" inputType="password" name="Password" value={this.state.password} 
                                     handleChange={this.handlePasswordChange} placeHolder="" />
-                        <button type="submit" className="btn btn-primary btn-lg btn-block submitButton">Login</button>
-                    </div>
-                </form>
+                        <Button color="primary" size="lg" className="submitButton" block>Login</Button>
+                    </Container>
+                </Form>
                 <p className="alternateOption">Don't have an account? <Link to="/register">Register here</Link></p>
             </div>
         );

@@ -1,6 +1,8 @@
 import React from 'react';
 import {inject, observer} from "mobx-react";
 
+import { AfterNavbar } from './../navstuff/navbar';
+
 @inject("userStore")
 @observer
 class Dashboard extends React.Component {
@@ -12,9 +14,8 @@ class Dashboard extends React.Component {
     render() {
         return(
             <div>
-                {this.props.toDisplay}
-                {JSON.stringify(this.props.userStore.user_info, null, 3)}
-                {this.props.userStore.user_info.id}
+                <AfterNavbar />
+                
             </div>
         );
     }
