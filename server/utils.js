@@ -1,7 +1,11 @@
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+
 const connection = require('./routes/sqlconnection/connectsql');
 const jwt = require('jsonwebtoken');
-const secret = require('./constants').secret;
-const saltrounds = require('./constants').saltrounds;
+const secret = process.env.SECRET;
+const saltrounds = parseInt(process.env.SALTROUNDS);
 const bcrypt = require('bcrypt');
 
 const checktoken = function(req, res, next) {

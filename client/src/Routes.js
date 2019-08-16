@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import {inject, observer} from "mobx-react";
 import Cookies from "js-cookie";
 
+import withUtils from "./components/navstuff/addComponents";
 import FrontPage from './components/frontpage/frontPage';
 import AuthPage from './components/login/authPage';
 import Dashboard from './components/trips/dashboard';
@@ -10,10 +11,10 @@ import Dashboard from './components/trips/dashboard';
 export default function(props) {
     return(
         <Router>
-            <PublicRoute exact path = "/" component={FrontPage} />
-            <PublicRoute exact path = "/register" component={AuthPage} compargs={{type:"register"}} />
-            <PublicRoute exact path = "/login" component={AuthPage} compargs={{type:"login"}} />
-            <PrivateRoute exact path = "/dashboard" component={Dashboard} />
+            <PublicRoute exact path = "/" component={withUtils(FrontPage)} />
+            <PublicRoute exact path = "/register" component={withUtils(AuthPage)} compargs={{type:"register"}} />
+            <PublicRoute exact path = "/login" component={withUtils(AuthPage)} compargs={{type:"login"}} />
+            <PrivateRoute exact path = "/dashboard" component={withUtils(Dashboard)} />
         </Router>
     );
 }

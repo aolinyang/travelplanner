@@ -1,9 +1,13 @@
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 const query = require('./../../utils').query;
 const compare = require('./../../utils').compare;
 const express = require('express');
 var router = express.Router();
-const timeout = require('./../../constants').timeout;
-const secret = require('./../../constants').secret;
+const timeout = parseInt(process.env.TIMEOUT);
+const secret = process.env.SECRET;
 const jwt = require('jsonwebtoken');
 
 router.post('/', (req, res) => {

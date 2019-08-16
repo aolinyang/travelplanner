@@ -5,7 +5,8 @@ import { APP_NAME, APP_DESC } from "./../../constants";
 import { Jumbotron, 
          Container,
          Row,
-         Col } from "reactstrap";
+         Col,
+         Button } from "reactstrap";
 
 class FrontPage extends React.Component {
 
@@ -22,10 +23,10 @@ class FrontPage extends React.Component {
                         <h3>{APP_DESC}</h3>
                         <Row className="buttonRowFront">
                             <Col>
-                                <Link to="/register"><button className="btn btn-lg btn-success float-right frontButton" id="leftButton">Get Started</button></Link>
+                                <Link to="/register"><Button color="success" size="lg" className="frontButton float-right" id="leftButton">Get Started</Button></Link>
                             </Col>
                             <Col>
-                                <Link to="/login"><button className="btn btn-lg btn-danger float-left frontButton" id="rightButton">Log In</button></Link>
+                                <Link to="/login"><Button color="danger" size="lg" className="frontButton float-left" id="rightButton">Log In</Button></Link>
                             </Col>
                         </Row>
                     </Container>

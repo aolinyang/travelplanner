@@ -1,7 +1,7 @@
 export default function() {
 
-    return fetch("/api/gettrips", {
-        method: "GET",
+    return fetch("/api/logout", {
+        method: "POST",
         mode: "cors",
         credentials: "include",
         headers: {
@@ -11,7 +11,7 @@ export default function() {
     })
     .then((res) => {
         let status = res.status;
-        if (status === 500) {
+        if (status === 403) {
             return Promise.reject(res);
         } else {
             return Promise.resolve(res);
@@ -19,13 +19,9 @@ export default function() {
     })
     .then(res => res.json())
     .then((res) => {
-        if (res.code === -1) {
-            return -1;
-        } else {
-            return res.all_trips;
-        }
+        return res.code;
     }).catch((err) => {
-        return 500;
+        return 403;
     });
 
 }

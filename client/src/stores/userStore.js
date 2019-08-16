@@ -1,4 +1,5 @@
 import {observable, action} from "mobx";
+import getTrips from "./../utils/trips/getTrips";
 
 class UserStore {
 
@@ -7,7 +8,7 @@ class UserStore {
 
     constructor() {
         this.user_info = {};
-        this.all_trips = {};
+        this.all_trips = [];
     }
 
     @action
@@ -48,7 +49,15 @@ class UserStore {
     @action
     erase_info() {
         this.user_info = {};
-        this.all_trips = {};
+        this.all_trips = [];
+    }
+
+    @action
+    async fetch_trips() {
+
+        let result = await getTrips();
+        this.supply_trips(result);
+
     }
 
 }

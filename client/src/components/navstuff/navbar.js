@@ -2,6 +2,7 @@ import React from 'react';
 import "./navbar.scss";
 import { Link } from "react-router-dom";
 import { APP_NAME } from './../../constants';
+import {inject, observer} from "mobx-react";
 
 import { Navbar, 
          NavbarBrand, 
@@ -11,27 +12,62 @@ import { Navbar,
          UncontrolledDropdown, 
          DropdownToggle, 
          DropdownMenu, 
-         DropdownItem } from "reactstrap";
+         DropdownItem,
+         Button,
+         Row,
+         Col,
+         Container } from "reactstrap";
+
+const TopNavbar = inject("userStore")(observer(function(props) {
+    let drop = typeof props.userStore.user_info.id === 'undefined' ? (
+        <UncontrolledDropdown nav inNavbar>
+            <DropdownToggle nav caret className="dropIcon">
+                <i className="fas fa-user-circle"></i><span> {props.userStore.user_info.first_name}</span>
+            </DropdownToggle>
+            <DropdownMenu right>
+                <Container className="dropMenu">
+                    <p>You are not logged in.</p>
+                    <Row>
+                        <Col>
+                            <Link to="/register"><Button color="success">Get Started</Button></Link>
+                        </Col>
+                        <Col>
+                            <Link to="/login"><Button color="danger">Log In</Button></Link>
+                        </Col>
+                    </Row>
+                </Container>
+            </DropdownMenu>
+        </UncontrolledDropdown>
+    ) : (
+        <NavDropdown contents={{
+            head: <React.Fragment><i className="fas fa-user-circle"></i><span> {props.userStore.user_info.first_name}</span></React.Fragment>,
+            options: [
+                {name: "Account", link: "/account"},
+                {name: "Help", link: "/contact"},
+                {name: <div><i class="fas fa-power-off"></i> Log Off</div>, link: "/logout"}
+            ]
+        }} />
+    );
+
+    return(
+        <Navbar className="topnav" expand="md">
+            <Link to="/dashboard" className="branding"><NavbarBrand className="innerbrand">{APP_NAME}</NavbarBrand></Link>
+
+            <Nav className="ml-auto" navbar>
+                {drop}
+            </Nav>
+        </Navbar>
+    );
+}));
 
 function AfterNavbar(props) {
         return(
             <Navbar className="mainnav" expand="md">
-                <Link to="/dashboard" className="branding"><NavbarBrand>{APP_NAME}</NavbarBrand></Link>
-                
-                <Nav className="ml-auto" navbar>
+                <Nav className="mainnavbar" navbar>
                     <NavOptions contents={[
-                        {name: "Test", link: "/test"},
-                        {name: "Other", link: "/other"}
+                        {name: "My Plans", link: "/dashboard", special: true},
+                        {name: "Places to Visit", link: "/sug"}
                     ]} />
-                    <NavDropdown contents={{
-                            head: <i className="fas fa-user-circle"></i>,
-                            options: [
-                                {name: "Option", link: "/option"},
-                                {name: "DIVIDER"},
-                                {name: "Another Option", link: "/anotheroption"},
-                                {name: <div><i class="fas fa-power-off"></i> Log Off</div>, link: "/third"}
-                            ]
-                        }} />
                 </Nav>
             </Navbar>
         );
@@ -40,9 +76,14 @@ function AfterNavbar(props) {
 //all the links up front
 function NavOptions(props) {
     return(
-        props.contents.map(val => <NavItem className="navOption">
-                                    <NavLink tag={Link} to={val.link} className="navOptionLink">{val.name}</NavLink>
-                                  </NavItem>)
+        props.contents.map((val) => {
+            let linkClass = typeof val.special === 'undefined' ? "navOptionLink" : "navOptionLink specialNavlink"
+            return (
+                <NavItem className="navOption d-flex align-items-center">
+                    <NavLink tag={Link} to={val.link} className={linkClass}>{val.name}</NavLink>
+                </NavItem>
+            );
+        })
     );
 }
 
@@ -68,10 +109,10 @@ function DropItem(props) {
         )
     }
     return(
-        <DropdownItem className="dropItem">
+        <DropdownItem>
             <NavLink tag={Link} to={props.content.link} className="dropOption">{props.content.name}</NavLink>
         </DropdownItem>
     );
 }
 
-export { AfterNavbar };
+export { TopNavbar, AfterNavbar };
