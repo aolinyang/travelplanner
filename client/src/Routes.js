@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 import withUtils from "./components/navstuff/addComponents";
 import FrontPage from './components/frontpage/frontPage';
 import AuthPage from './components/login/authPage';
-import Dashboard from './components/trips/dashboard';
+import Dashboard from './components/trips/bigview/dashboard';
 
 export default function(props) {
     return(

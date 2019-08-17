@@ -77,7 +77,7 @@ class RegisterForm extends React.Component {
                 <Form className="authForm" onSubmit={this.handleSubmit}>
                     <h2 className="authTitle">Register</h2>
                     <Container>
-                        <Row>
+                        <Row form>
                             <Col>
                                 <InputField fieldId="registerFirstNameInput" inputType="text" name="First Name" value={this.state.first_name} 
                                             handleChange={this.handleFnChange} placeHolder="e.g. John" />

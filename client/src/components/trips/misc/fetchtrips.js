@@ -12,7 +12,10 @@ export default function(PageComponent) {
         }
 
         componentDidMount() {
-            this.props.userStore.fetch_trips();
+            let all_trips = this.props.userStore.all_trips;
+            if (typeof all_trips === 'undefined' || all_trips === 500) {
+                this.props.userStore.fetch_trips();
+            }
         }
 
         render() {

@@ -1,6 +1,6 @@
 import React from "react";
 import "./tripcard.scss";
-import { months, days } from "./../../constants";
+import { months, days } from "./../../../constants";
 
 import { Card,
          CardHeader,
@@ -26,6 +26,7 @@ class TripCard extends React.Component {
             <Card className="tripcard">
                 <CardHeader tag="h3">{this.props.trip_info.trip_name}</CardHeader>
                 <CardBody>
+                    <CardText>{"ID: " + this.props.trip_info.trip_id}</CardText>
                     <CardText>{"Type: " + this.props.trip_info.trip_type}</CardText>
                     <CardText>{"Start date: " + days[this.state.start_date.getDay()] + ", " + months[this.state.start_date.getMonth()] + " " + this.state.start_date.getDate() + ", " + this.state.start_date.getFullYear()}</CardText>
                     <CardText>{"End date: " + days[this.state.end_date.getDay()] + ", " + months[this.state.end_date.getMonth()] + " " + this.state.end_date.getDate() + ", " + this.state.end_date.getFullYear()}</CardText>
