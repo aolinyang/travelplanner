@@ -18,10 +18,10 @@ router.post('/', (req, res) => {
     const formattedDate = year+"-"+month+"-"+day+" "+hr+":"+min+":00";
 
     var trip_id;
-    const statement1 = "INSERT INTO trips (user_id, trip_type, start_date, end_date, completed) values (?, ?, ?, ?, false)";
+    const statement1 = "INSERT INTO trips (user_id, trip_name, trip_type, start_date, end_date, completed) values (?, ?, ?, ?, ?, false)";
     const statement2 = "INSERT INTO itemlists (user_id, trip_id, essentials, food, clothing, toiletries, entertainment, misc) values (?, ?, JSON_ARRAY(), JSON_ARRAY(), JSON_ARRAY(), JSON_ARRAY(), JSON_ARRAY(), JSON_ARRAY())";
     
-    query(statement1, [user_id, " ", formattedDate, formattedDate]).then((result) => {
+    query(statement1, [user_id, "My Trip", " ", formattedDate, formattedDate]).then((result) => {
 
         trip_id = result.insertId;
         return query(statement2, [user_id, trip_id]);

@@ -56,6 +56,7 @@ class UserStore {
     async fetch_trips() {
 
         let result = await getTrips();
+        await result.sort((tripA, tripB) => new Date(tripA.start_date) < new Date(tripB.start_date) ? 1 : -1);
         this.supply_trips(result);
 
     }

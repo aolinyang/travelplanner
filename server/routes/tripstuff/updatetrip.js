@@ -40,7 +40,7 @@ router.post('/', (req, res) => {
         if (user_id != rows[0].user_id) {
             throw new Error("not your trip");
         }
-        return query("UPDATE LOW_PRIORITY trips SET trip_type = ?, start_date = ?, end_date = ?, completed = ? WHERE trip_id = ?", [trip_info.trip_type, trip_info.start_date, trip_info.end_date, trip_info.completed, trip_id]);
+        return query("UPDATE LOW_PRIORITY trips SET trip_type = ?, trip_name = ?, start_date = ?, end_date = ?, completed = ? WHERE trip_id = ?", [trip_info.trip_type, trip_info.trip_name, trip_info.start_date, trip_info.end_date, trip_info.completed, trip_id]);
 
     }).then((results) => {
 

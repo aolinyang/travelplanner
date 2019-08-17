@@ -1,6 +1,11 @@
 import React from 'react';
 import {inject, observer} from "mobx-react";
-import userStore from '../../stores/userStore';
+import TripList from "./triplist";
+import "./dashboard.scss";
+import fetchTrips from "./fetchtrips";
+
+import { Button,
+         Container } from 'reactstrap';
 
 @inject("userStore")
 @observer
@@ -8,24 +13,24 @@ class Dashboard extends React.Component {
 
     constructor(props){
         super(props);
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    componentDidMount() {
-        if (Array.isArray(userStore.all_trips)) {
-            if (userStore.all_trips.length === 0) {
-                userStore.fetch_trips();
-            }
-        }
+    handleClick() {
+        
     }
 
     render() {
         return(
             <div>
-                
+                <Container className="triplist">
+                    <TripList />
+                </Container>
+                <Button className="addButton d-flex align-items-center justify-content-center" color="primary" onClick={this.handleClick}>+</Button>
             </div>
         );
     }
 
 }
 
-export default Dashboard;
+export default fetchTrips(Dashboard);

@@ -1,11 +1,12 @@
 import React from "react";
+import { Container } from "reactstrap";
 
 export default function Footer(props) {
     return(
         <footer class="footer">
-            <div class="container">
-                This is a footer.
-            </div>
+            <Container>
+                
+            </Container>
         </footer>
     );
 }
