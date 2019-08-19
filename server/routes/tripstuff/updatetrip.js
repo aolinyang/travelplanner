@@ -40,7 +40,16 @@ router.post('/', (req, res) => {
         if (user_id != rows[0].user_id) {
             throw new Error("not your trip");
         }
-        return query("UPDATE LOW_PRIORITY trips SET trip_type = ?, trip_name = ?, start_date = ?, end_date = ?, completed = ? WHERE trip_id = ?", [trip_info.trip_type, trip_info.trip_name, trip_info.start_date, trip_info.end_date, trip_info.completed, trip_id]);
+        let start_date = new Date(trip_info.start_date);
+        let end_date = new Date(trip_info.end_date);
+        let status = "Not Started";
+        let today = new Date();
+        if (end_date < today) {
+            status = "Complete";
+        } else if (start_date < today) {
+            status = "Ongoing";
+        }
+        return query("UPDATE LOW_PRIORITY trips SET trip_type = ?, trip_name = ?, start_date = ?, end_date = ?, status = ? WHERE trip_id = ?", [trip_info.trip_type, trip_info.trip_name, trip_info.start_date, trip_info.end_date, status, trip_id]);
 
     }).then((results) => {
 

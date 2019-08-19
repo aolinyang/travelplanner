@@ -11,8 +11,9 @@ const InputField = (props) => {
                        value={props.value} 
                        onChange={props.handleChange} 
                        placeholder={props.placeHolder} 
-                       required 
-                />
+                       required>
+                    {props.children}
+                </Input>
             </FormGroup>
         );
 }

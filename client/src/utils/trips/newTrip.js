@@ -1,6 +1,6 @@
-export default function(trip) {
+export default function(trip_info) {
 
-    return fetch("/api/updatetrip", {
+    return fetch("/api/newtrip", {
         method: "POST",
         mode: "cors",
         credentials: "include",
@@ -9,7 +9,7 @@ export default function(trip) {
             "content-type": "application/json"
         },
         body: JSON.stringify({
-            "trip_info": trip
+            trip_info: trip_info
         })
     })
     .then((res) => {
@@ -22,7 +22,9 @@ export default function(trip) {
     })
     .then(res => res.json())
     .then((res) => {
-        return res.code;
+        return {
+            trip_id: res.trip_info.trip_id
+        }
     }).catch((err) => {
         return parseInt(err.message);
     });

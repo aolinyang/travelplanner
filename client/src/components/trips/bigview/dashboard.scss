@@ -12,6 +12,9 @@
     margin: 0;
     font-size: 40px;
     line-height: 0;
+    &:hover {
+        background: $pColor;
+    }
 }
 
 .triplist {

@@ -3,6 +3,8 @@ import "./triplist.scss";
 import TripCard from "./../closeview/tripcard";
 import { inject, observer } from "mobx-react";
 
+import { Spinner } from "reactstrap";
+
 @inject('userStore')
 @observer
 class TripList extends React.Component {
@@ -15,17 +17,19 @@ class TripList extends React.Component {
         
         if (typeof this.props.userStore.all_trips === 'undefined') {
             return(
-                <p>Loading trips...</p>
+                <div className="d-flex justify-content-center">
+                    <Spinner color="primary" />
+                </div>
             );
         }
         else if (this.props.userStore.all_trips === -1) {
             return(
-                <p>You have no trips yet!</p>
+                <p className="d-flex justify-content-center">You have no trips yet!</p>
             );
         }
         else if (this.props.userStore.all_trips === 500) {
             return(
-                <p>Error loading trips.</p>
+                <p className="d-flex justify-content-center">Error loading trips.</p>
             );
         }
         else {

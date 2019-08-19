@@ -7,6 +7,7 @@ import withUtils from "./components/navstuff/addComponents";
 import FrontPage from './components/frontpage/frontPage';
 import AuthPage from './components/login/authPage';
 import Dashboard from './components/trips/bigview/dashboard';
+import Editor from './components/trips/edit/editTrips';
 
 export default function(props) {
     return(
@@ -15,6 +16,7 @@ export default function(props) {
             <PublicRoute exact path = "/register" component={withUtils(AuthPage)} compargs={{type:"register"}} />
             <PublicRoute exact path = "/login" component={withUtils(AuthPage)} compargs={{type:"login"}} />
             <PrivateRoute exact path = "/dashboard" component={withUtils(Dashboard)} />
+            <PrivateRoute exact path = "/trips/:trip_id/edit/:aspect" component={withUtils(Editor)} />
         </Router>
     );
 }

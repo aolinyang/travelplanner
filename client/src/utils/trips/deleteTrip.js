@@ -1,6 +1,6 @@
-export default function(trip) {
+export default function(trip_id) {
 
-    return fetch("/api/updatetrip", {
+    return fetch("/api/deletetrip", {
         method: "POST",
         mode: "cors",
         credentials: "include",
@@ -9,7 +9,9 @@ export default function(trip) {
             "content-type": "application/json"
         },
         body: JSON.stringify({
-            "trip_info": trip
+            "trip_info": {
+                trip_id: trip_id
+            }
         })
     })
     .then((res) => {

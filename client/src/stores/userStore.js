@@ -1,5 +1,7 @@
 import {observable, action} from "mobx";
 import getTrips from "./../utils/trips/getTrips";
+import newTrip from "./../utils/trips/newTrip";
+import deleteTrip from "./../utils/trips/deleteTrip";
 
 class UserStore {
 
@@ -21,8 +23,19 @@ class UserStore {
     }
 
     @action
-    add_trip() {
-        this.all_trips.push({});
+    async add_trip(trip_info) {
+        let result = await newTrip(trip_info);
+        if (result === 500 || result === 403) {
+            return {
+                code: result
+            }
+        } else {
+            await this.fetch_trips();
+            return {
+                code: 0,
+                trip_id: result.trip_id
+            }
+        }
     }
 
     @action
@@ -36,13 +49,9 @@ class UserStore {
     }
 
     @action
-    delete_trip(id) {
-        for (let i = 0; i < this.all_trips.length; i++) {
-            if (this.all_trips[i].trip_id === id) {
-                this.all_trips.splice(i, 1);
-                break;
-            }
-        }
+    async delete_trip(id) {
+        let code = await deleteTrip(id);
+        return code;
     }
 
     @action
